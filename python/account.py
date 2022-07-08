@@ -4,4 +4,8 @@ class Account:
   name      = str 
   documents = str      
   email     = str  
-  password  = str     
+  password  = str   
+
+  def __init__(self, name, document):
+    self.name = name
+    self.document = document
