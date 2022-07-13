@@ -14,7 +14,7 @@ class car {
     }
 
     public function printDataCar() {
-        echo "Licencia: $this->license Driver:". $this->driver->name;
+        echo "Licencia: $this->license Driver: {$this->driver->name} Numero de pasajeros: $this->passenger";
     }
 
     public function getPassenger(){
