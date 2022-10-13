@@ -1,3 +1,25 @@
+class Comment{
+    constructor({
+        content, 
+        studentName, 
+        studentRole = "estudiante",
+    }) {
+        this.content = content;
+        this.studentName = studentName;
+        this.studentRole = studentRole;
+        this.likes = 0;
+    }
+
+    publicar() {
+        console.log(this.studentName + " (" + this.studentRole + ") ");
+        console.log(this.likes + "likes");
+        console.log(this.content);
+    }
+}
+
+
+
+
 function videoPlay(id){
     const urlSecreta = "https://platziultrasecretomasquelanasa.com/" + id;
     console.log("Se esta reproduciendo desde la url" + urlSecreta);
@@ -61,6 +83,15 @@ class Student {
         this.learningPaths = learningPaths;
 
     };
+
+    publicarComentario(commentContent){
+        const comment = new Comment({
+            content: commentContent,
+            studentName: this.name,
+        });
+
+        comment.publicar();
+    }
  
 
 };
@@ -100,6 +131,26 @@ class ExpertStudent extends Student { //esta es la herencia asi se escribe para 
 
     approvedCourse(newCourse){
         this.approvedCourses.push(newCourse);
+    }
+}
+
+class TeacherStudent extends Student { //esta es la herencia asi se escribe para heredar de una clase en este caso student
+    constructor(props){
+        super(props);
+    }
+
+    approvedCourse(newCourse){
+        this.approvedCourses.push(newCourse);
+    }
+
+    publicarComentario(commentContent){
+        const comment = new Comment({
+            content: commentContent,
+            studentName: this.name,
+            studentRole: "profesor",
+        });
+
+        comment.publicar();
     }
 }
 
@@ -185,6 +236,14 @@ const miguelito = new BasicStudent({
         escuelaWeb,
         escuelaData,
     ],
+});
+
+const freddy = new TeacherStudent({
+    name: "Freddy Vega",
+    username: "frediert",
+    email: "f@gep.com",
+    twitter: "freddier",
+   
 });
 
 
